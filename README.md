@@ -1,6 +1,6 @@
-#ContextMenuJs#
+# ContextMenuJs
 
-##Add Menu###
+## Add Menu
 
 1. Open js/menus.js file
 2. Add an object
@@ -56,7 +56,7 @@ var otherMenu = {
 };
 ```
 
-##Menu Attributes
+## Menu Attributes
 
 menu attributes(**EVERY ATTRIBUTE IF NOT SET IS UNDEFINED**):
     - title: defines what header title will be displayed
@@ -68,7 +68,7 @@ menu attributes(**EVERY ATTRIBUTE IF NOT SET IS UNDEFINED**):
     - separator: (boolean value) creates a small line after this menu voice
 
 
-##Using Menu
+## Using Menu
 1. Include css, jquery and scripts:
 
 ```html
