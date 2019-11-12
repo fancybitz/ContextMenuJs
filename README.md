@@ -59,13 +59,13 @@ var otherMenu = {
 ## Menu Attributes
 
 menu attributes(**EVERY ATTRIBUTE IF NOT SET IS UNDEFINED**):
-    - title: defines what header title will be displayed
-    - code: defines what menu will be displayed on click
+    1. **title**: defines what header title will be displayed
+    2. **code**: defines what menu will be displayed on click
         example: if you want to use the second menu(otherMenu) when clicking some p element, you have to use the **menuCode** attribute inside the p element ```<p menuCode="otherMenu">click me</p>```
-    - voicesList: contains all the voices of the menu
-    - img: contains the url of the image that you want to display inside your menu voice
-    - submenu: contains an array of voices
-    - separator: (boolean value) creates a small line after this menu voice
+    3. **voicesList**: contains all the voices of the menu
+    4. **img**: contains the url of the image that you want to display inside your menu voice
+    5. **submenu**: contains an array of voices
+    6. **separator**: (boolean value) creates a small line after this menu voice
 
 
 ## Using Menu in your page
