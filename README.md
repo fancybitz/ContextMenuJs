@@ -68,7 +68,7 @@ menu attributes(**EVERY ATTRIBUTE IF NOT SET IS UNDEFINED**):
     - separator: (boolean value) creates a small line after this menu voice
 
 
-## Using Menu
+## Using Menu in your page
 1. Include css, jquery and scripts:
 
 ```html
