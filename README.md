@@ -1,6 +1,3 @@
-ContextMenuJs
-<snippet>
-  <content><![CDATA[
 #ContextMenuJs#
 
 ###Add Menu
@@ -85,6 +82,4 @@ menu attributes(**EVERY ATTRIBUTE IF NOT SET IS UNDEFINED**):
 ```javascript
 addAll([tmpMenu, otherMenu, ...]);
 ```
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
+
