@@ -1,6 +1,6 @@
 #ContextMenuJs#
 
-###Add Menu
+##Add Menu
 
 1. Open js/menus.js file
 2. Add an object
@@ -56,19 +56,19 @@ var otherMenu = {
 };
 ```
 
-###Menu Attributes
+##Menu Attributes
 
 menu attributes(**EVERY ATTRIBUTE IF NOT SET IS UNDEFINED**):
     - title: defines what header title will be displayed
     - code: defines what menu will be displayed on click
-        example: if you want to use the second menu(otherMenu) when clicking some p element, you have to use the **menuCode** attribute inside the p element ```<p menuCode="otherMenu">click me</p>````
+        example: if you want to use the second menu(otherMenu) when clicking some p element, you have to use the **menuCode** attribute inside the p element ```<p menuCode="otherMenu">click me</p>```
     - voicesList: contains all the voices of the menu
     - img: contains the url of the image that you want to display inside your menu voice
     - submenu: contains an array of voices
     - separator: (boolean value) creates a small line after this menu voice
 
 
-###Using Menu
+##Using Menu
 1. Include css, jquery and scripts:
 
 ```html
