@@ -1,7 +1,7 @@
 ContextMenuJs
 <snippet>
   <content><![CDATA[
-# ${1:ContextMenuJs}
+#ContextMenuJs#
 
 ###Add Menu
 
