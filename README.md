@@ -1,6 +1,6 @@
 #ContextMenuJs#
 
-##Add Menu
+##Add Menu###
 
 1. Open js/menus.js file
 2. Add an object
