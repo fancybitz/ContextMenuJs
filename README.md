@@ -83,3 +83,5 @@ menu attributes(**EVERY ATTRIBUTE IF NOT SET IS UNDEFINED**):
 addAll([tmpMenu, otherMenu, ...]);
 ```
 
+# Coming soon
+- Submenu on positioning left when overflowing on x axis 
