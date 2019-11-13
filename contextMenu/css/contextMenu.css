@@ -1,5 +1,5 @@
 .contextMenuContainer{
-	width: 120px;
+	width: 170px;
 	background-color: #ddd;
 	position: fixed;
 	display: block;
@@ -10,11 +10,12 @@
 	-webkit-box-shadow: 0px 6px 6px 0px #ccc;
 	box-shadow:         0px 6px 6px 0px #ccc;
 	border:1px solid #ccc;
+	white-space: nowrap;
 	font-family: Calibri, Geneva, Helvetica, sans-serif;
 }
 .submenu{
-	width: 120px;
-	left: 119px;
+	width: 170px;
+	left: 169px;
 	background-color: #404040;
 	position: absolute;
 	-moz-box-shadow:    0px 6px 6px 0px #ccc;
