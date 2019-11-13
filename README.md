@@ -86,9 +86,9 @@ menu attributes(**EVERY ATTRIBUTE IF NOT SET IS UNDEFINED**):
 <script src="js/menus.js"></script>
 ```
 
-2. Add your defined menus to the page with addAll([tmpMenu, otherMenu, ...]) command
+2. Add your defined menus to the page with generateMenus([tmpMenu, otherMenu, ...]) function
 ```javascript
-addAll([tmpMenu, otherMenu, ...]);
+generateMenus([tmpMenu, otherMenu, ...]);
 ```
 
 # Coming soon
