@@ -54,7 +54,7 @@ $(document).ready(function(){
 		});
 		$('.contextMenuVoiceSubMenu').mouseover(function(){
 			$(this).children().css({visibility: 'visible', top: $(this).position().top+'px'});
-			console.log($(this).css('left')+">"+parseInt($(this).css('width')));
+			//console.log($(this).css('left')+">"+parseInt($(this).css('width')));
 		});
 		$('.contextMenuVoiceSubMenu').mouseleave(function(){
 			$(this).children().css({top: '-1000px'});
@@ -69,132 +69,127 @@ $(document).ready(function(){
 	});
 });
 
-function addAll(structures){
-	for(var s in structures){
-		generateHtml(structures[s]);
-	}
-}
+//gerenates the base html for the context menu
+function generateMenus(structures){
+	structures.forEach(function(structure){
+		var ris = "<div class='contextMenuContainer'";
 
-function generateHtml(structure){
-	var ris = "<div class='contextMenuContainer'";
-				for(var key in structure){
-					if(key=='code'){
-						ris+=" menuCode='"+structure[key]+"'";
-						break;
-					}
-				}
-				ris+="><ul class='contextMenuList'>";
+		for(var key in structure){
+			if(key=='code'){
+				ris+=" menuCode='"+structure[key]+"'";
+				break;
+			}
+		}
+		ris+="><ul class='contextMenuList'>";
 
-
-				for(var key in structure){
-				    if(key=='title'){
-						ris+="<li class='contextMenuTitle'>"+structure[key]+"</li>";
-				    }else if(key!='title' && key!='code'){
-				    	for (let i = 0; i < structure[key].length; i++) {
-
-						    if(structure[key][i].submenu==undefined){
-							    ris+="<li class='contextMenuVoice";
-								if(structure[key][i].separator!=undefined){
-							    	ris+=" separator'";
-							    }else{
-							    	ris+="'";
-							    }
-								if(structure[key][i].link!=undefined){
-							    	ris+=" target='"+structure[key][i].link+"'";
-							    }
-							    ris+="><div class='internalDiv'>";
-
-							    var imgSrc = "imgs/empty.png";
-							    if(structure[key][i].img!=undefined){
-							    	imgSrc = structure[key][i].img;
-							    }
-						    	ris+="<img class='headImg' src='"+imgSrc+"' width='12px'></img>";
-							    
-							    if(structure[key][i].voice!=undefined){
-							    	var voiceClass = "voice"
-							    	if(structure[key][i].link!=undefined){
-							    		voiceClass = "clickableVoice"
-							    	}
-							    	ris+="<span class='"+voiceClass+"'>"+structure[key][i].voice+"</span>";
-			
-							    }
-							    	
-							    ris+="</div></li>";
-						    }else{
-							    if(structure[key][i].submenu!=undefined){
-							    	ris+=submenu(structure[key][i].voice, structure[key][i].img, structure[key][i].submenu, arrow);
-							    }	
-						    }
-						}
+		for(var key in structure){
+			//there can be only a title for this context menu
+		    if(key=='title'){
+				ris+="<li class='contextMenuTitle'>"+structure[key]+"</li>";
+		    }else if(key=='voicesList'){
+		    	for (let i = 0; i < structure[key].length; i++) {
+				    if(structure[key][i].submenu==undefined){
+					    ris+=getNormalVoice(structure[key][i]);
+				    }else{
+				    	ris+=getSubVoice(structure[key][i])
 				    }
 				}
+		    }
+		}
 
+		ris+="</ul></div>";
 
-	ris+="</ul>"
-		+"</div>";
+		//attach menu to the body
+		$(document).ready(function(){
+			$("body").append(ris);
+		});
+	});
 
+	//warning message if default menu not found
 	$(document).ready(function(){
-		$("body").append(ris);
+		var found = false;
+
+		$(".contextMenuContainer").each(function(){
+			if($(this).attr('menucode')=="default"){
+				found = true;
+			}
+		});
+		if(!found){
+			console.log('Without field code:\"default\" inside on of the menus inside menus.js there no default menu will be displayed')
+		}
 	});
 }
-function submenu(voice, img, submenuVal, arrowImg){
+
+//generate the html code for submenus
+function submenu(submenuVal){
 	var ris = "";
     if(submenuVal!=undefined){
-    	ris+="<li class='contextMenuVoiceSubMenu'>";
-    	if(arrowImg!=undefined){
-    		ris+=arrowImg;
-    	}
-		if(img!=undefined){
-			ris+="<img class='subHeadImg' src='"+img+"' width='12px'><span class='voice'>"+voice+"</span></img>";
-		}else{
-			ris+=voice;
-		}	   
 		ris+="<ul class='submenu'>";
 		for (let i = 0; i < submenuVal.length; i++) {
 
 		    if(submenuVal[i].submenu==undefined){
-			    ris+="<li class='contextMenuVoice";
-				if(submenuVal[i].separator!=undefined){
-			    	ris+=" separator'";
-			    }else{
-			    	ris+="'";
-			    }
-				if(submenuVal[i].link!=undefined){
-			    	ris+=" target='"+submenuVal[i].link+"'";
-			    }
-			    ris+="><div class='internalDiv'>";
-			    var imgSrc = "imgs/empty.png";
-			    if(submenuVal[i].img!=undefined){
-			    	imgSrc = submenuVal[i].img;
-			    }
-		    	var imgClass = "headImg"
-		    	if(submenuVal[i].submenu!=undefined){
-		    		imgClass = "subHeadImg"
-		    	}
-			    ris+="<img class='"+imgClass+"' src='"+imgSrc+"' width='12px'></img>";
-			    
-			    if(submenuVal[i].voice!=undefined){
-			    	var voiceClass = "voice"
-			    	if(submenuVal[i].link!=undefined){
-			    		voiceClass = "clickableVoice"
-			    	}
-			    	ris+="<span class='"+voiceClass+"'>"+submenuVal[i].voice+"</span>";
-			    
-			    	if(submenuVal[i].submenu!=undefined){
-				    	//ris+="<img class='"+imgClass+"' src='arrow.png' width='20px' style='float:right;'></img>";
-				    }
-			    }
-			    ris+="</div></li>";
+			    ris+=getNormalVoice(submenuVal[i]);
 			}else{
-			    if(submenuVal[i].submenu!=undefined){
-			    	ris+=submenu(submenuVal[i].voice,submenuVal[i].img,submenuVal[i].submenu, arrow);
-			    }
+				ris+=getSubVoice(submenuVal[i])
 			}
 		}
 
-		ris+="</ul>"
-				+"</li>";
+		ris+="</ul>";
     }
 
     return ris;
+}
+
+//creates a normal voice
+function getNormalVoice(structure){
+	var ris = "";
+
+	ris+="<li class='contextMenuVoice";
+	if(structure.separator!=undefined && structure.separator){
+    	ris+=" separator'";
+    }else{
+    	ris+="'";
+    }
+	if(structure.link!=undefined){
+    	ris+=" target='"+structure.link+"'";
+    }
+    ris+="><div class='internalDiv'>";
+
+    var imgSrc = "imgs/empty.png";
+    if(structure.img!=undefined){
+    	imgSrc = structure.img;
+    }
+	ris+="<img class='headImg' src='"+imgSrc+"' width='12px'></img>";
+    
+    if(structure.voice!=undefined){
+    	var voiceClass = "voice"
+    	if(structure.link!=undefined){
+    		voiceClass = "clickableVoice"
+    	}
+    	ris+="<span class='"+voiceClass+"'>"+structure.voice+"</span>";
+
+    }
+		ris+="</div></li>";
+
+	return ris;
+}
+
+//create a subvoice
+function getSubVoice(structure){
+	var ris = "<li class='contextMenuVoiceSubMenu'";
+    var imgSrc = "imgs/empty.png";
+
+	if(structure.separator!=undefined && structure.separator){
+    	ris+=" separator'";
+    }
+	ris+="'>"+arrow;
+
+	if(structure.img!=undefined){
+		imgSrc = structure.img;
+	}
+	ris+="<img class='subHeadImg' src='"+imgSrc+"' width='12px'><span class='voice'>"+structure.voice+"</span></img>";
+	    
+	ris+=submenu(structure.submenu)+"</li>";
+
+	return ris;
 }
