@@ -1,5 +1,13 @@
 # ContextMenuJs
 
+### Versions
+```
+- 0.0.1 Barely functional menu
+- 0.0.2 Bugfix
+- 0.0.3 Code Refactor
+- 0.1.0 Stable version
+```
+
 ## Add Menu
 
 1. Open js/menus.js file
@@ -60,7 +68,7 @@ var otherMenu = {
 
 menu attributes(**EVERY ATTRIBUTE IF NOT SET IS UNDEFINED**):
 1. **title**: defines what header title will be displayed
-2. **code**: defines what menu will be displayed on click
+2. **code**: defines what menu will be displayed on click(for default menu use code: "default", if not set the console will warn you but is not obligatory to set a default value)
         example: if you want to use the second menu(otherMenu) when clicking some p element, you have to use the **menuCode** attribute inside the p element ```<p menuCode="otherMenu">click me</p>```
 3. **voicesList**: contains all the voices of the menu
 4. **img**: contains the url of the image that you want to display inside your menu voice
