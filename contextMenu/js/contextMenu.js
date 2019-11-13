@@ -146,10 +146,9 @@ function getNormalVoice(structure){
 
 	ris+="<li class='contextMenuVoice";
 	if(structure.separator!=undefined && structure.separator){
-    	ris+=" separator'";
-    }else{
-    	ris+="'";
+    	ris+=" separator";
     }
+    ris+="'";
 	if(structure.link!=undefined){
     	ris+=" target='"+structure.link+"'";
     }
@@ -176,11 +175,11 @@ function getNormalVoice(structure){
 
 //create a subvoice
 function getSubVoice(structure){
-	var ris = "<li class='contextMenuVoiceSubMenu'";
+	var ris = "<li class='contextMenuVoiceSubMenu";
     var imgSrc = "imgs/empty.png";
 
 	if(structure.separator!=undefined && structure.separator){
-    	ris+=" separator'";
+    	ris+=" separator";
     }
 	ris+="'>"+arrow;
 
