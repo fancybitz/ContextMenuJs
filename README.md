@@ -92,4 +92,4 @@ generateMenus([tmpMenu, otherMenu, ...]);
 ```
 
 # Coming soon
-- Submenu on positioning left when overflowing on x axis 
+- Submenu positioning on left when overflowing on x axis 
